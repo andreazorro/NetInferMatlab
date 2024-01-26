@@ -1,5 +1,5 @@
 delete(gcp('nocreate'))
-parpool(8)
+parpool('Processes',8)
 
 if exist('InferNets','dir')==0 
     mkdir InferNets
@@ -82,8 +82,11 @@ writecell(sNet_sp,strcat(dirout,'Spearman_',filename_exp),'FileType','text','Del
 
 t(1,5) = toc;
 
-writematrix([ngenes,t],strcat(dirout,'NGenesandTime_',filename_exp),'FileType','text','Delimiter','tab')
-disp(strcat(dirout,'NGenesandTime_',filename_exp))
+times = cell(2,6);
+times(1,:) = {'NumberofGenes','Anova','Friedman','Statmodel','PartialCorrelation','Correlation'};
+times(2,:) = num2cell([ngenes,t]);
+
+writecell(times,strcat(dirout,'NGenesandTime_',filename_exp),'FileType','text','Delimiter','tab')
 delete(gcp('nocreate'));
 
 end
