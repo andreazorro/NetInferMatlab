@@ -1,5 +1,5 @@
 delete(gcp('nocreate'))
-parpool('Processes',8)
+% parpool('Processes',8)
 
 if exist('InferNets','dir')==0 
     mkdir InferNets
