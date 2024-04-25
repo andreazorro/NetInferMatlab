@@ -39,7 +39,7 @@ function [sNet] = Statmodel(gene_names, tf_list, expression_matrix)
         if find(h==0) == 1
             bestfit = 1;
         else
-            [~,bestfit] = min(p);
+            [~,bestfit] = max(p);
         end
         
         try 
